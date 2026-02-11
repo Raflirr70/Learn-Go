@@ -31,8 +31,8 @@ func IfFlow() {
 func SwitchFlow() {
 	kondisi := 2
 
-	//pembuatan control flow menggunakan switch tanpa menggunakan break
-	//sehingga jika case 1 terpenuhi maka program akan masuk ke case 2 dan seterusnya
+	//pembuatan control flow menggunakan switch (switch di go tidak memerlukan break untuk menghentikan control flow)
+	//sehingga jika case 1 terpenuhi maka control flow switch akan berakhir
 	switch kondisi {
 	case 1:
 		fmt.Print("Case 1 Terpenuhi")
@@ -44,22 +44,21 @@ func SwitchFlow() {
 		fmt.Print("Case 1,2,3 tidak Terpenuhi")
 	}
 
-	//pembuatan control flow menggunakan switch dengan menggunakan break
-	//sehingga jika case 1 terpenuhi maka control flow switch akan berakhir
+	//pembuatan control flow menggunakan switch dengan menggunakan fallthrough
+	//sehingga jika case 1 terpenuhi maka program akan masuk ke case 2 dan seterusnya
 	switch kondisi {
 	case 1:
 		fmt.Print("Case 1 Terpenuhi")
-		break
+		fallthrough
 	case 2:
 		fmt.Print("Case 2 Terpenuhi")
-		break
+		fallthrough
 	case 3:
 		fmt.Print("Case 3 Terpenuhi")
-		break
+		fallthrough
 	default:
-		fmt.Print("Case 1,2,3 tidak Terpenuhi")
-		//case paling bawah tidak perlu menggunakan break
 	}
+	fmt.Print("Case 1,2,3 tidak Terpenuhi")
 }
 
 func main() {
