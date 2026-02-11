@@ -48,6 +48,33 @@ func CreateGerbongBelakang(nama string, bobot int) {
 	}
 }
 
+// funtion untuk menghapus Gerbong di Depan
+func DeleteGerbongDepan() {
+	if IsEmpty() {
+		fmt.Print("Gerbong Masih Kosong")
+		return
+	}
+	head = head.next
+}
+
+// function untuk menghapus gerbong di belakang
+func DeleteGerbongBelakang() {
+	if IsEmpty() {
+		fmt.Print("Gerbong Masih Kosong")
+		return
+	}
+	if head.next == nil {
+		head = nil
+		return
+	}
+
+	bantu := head
+	for bantu.next.next != nil {
+		bantu = bantu.next
+	}
+	bantu.next = nil
+}
+
 // function untuk menampilkan seluruh gerbong
 func View() {
 	bantu := head
@@ -63,5 +90,6 @@ func main() {
 	CreateGerbongDepan("mamat", 2)
 	CreateGerbongDepan("jajang", 5)
 	CreateGerbongBelakang("tehyung", 10)
+	DeleteGerbongBelakang()
 	View()
 }
